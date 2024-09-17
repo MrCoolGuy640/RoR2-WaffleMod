@@ -6,22 +6,15 @@ using UnityEngine.AddressableAssets;
 
 namespace WaffleMod
 {
-    // This is an example plugin that can be put in
-    // BepInEx/plugins/ExamplePlugin/ExamplePlugin.dll to test out.
-    // It's a small plugin that adds a relatively simple item to the game,
-    // and gives you that item whenever you press F2.
-
-    // This attribute specifies that we have a dependency on a given BepInEx Plugin,
-    // We need the R2API ItemAPI dependency because we are using for adding our item to the game.
-    // You don't need this if you're not using R2API in your plugin,
-    // it's just to tell BepInEx to initialize R2API before this plugin so it's safe to use R2API.
+    // MUST have the following line for BepInEx to initialize R2API BEFORE OUR CODE (since we need to use R2API)
+    // It shows we have a dependancy.
     [BepInDependency(ItemAPI.PluginGUID)]
 
-    // This one is because we use a .language file for language tokens
+    // MUST use the following for language files!
     // More info in https://risk-of-thunder.github.io/R2Wiki/Mod-Creation/Assets/Localization/
     [BepInDependency(LanguageAPI.PluginGUID)]
 
-    // This attribute is required, and lists metadata for your plugin.
+    // MUST use the following for plugin metadata, etc.
     [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
 
     // This is the main declaration of our plugin class.
@@ -29,7 +22,7 @@ namespace WaffleMod
     // BaseUnityPlugin itself inherits from MonoBehaviour,
     // so you can use this as a reference for what you can declare and use in your plugin class
     // More information in the Unity Docs: https://docs.unity3d.com/ScriptReference/MonoBehaviour.html
-    public class ExamplePlugin : BaseUnityPlugin
+    public class WaffleMod : BaseUnityPlugin
     {
         // The Plugin GUID should be a unique ID for this plugin,
         // which is human readable (as it is used in places like the config).
