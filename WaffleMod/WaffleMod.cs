@@ -4,7 +4,7 @@ using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace ExamplePlugin
+namespace WaffleMod
 {
     // This is an example plugin that can be put in
     // BepInEx/plugins/ExamplePlugin/ExamplePlugin.dll to test out.
