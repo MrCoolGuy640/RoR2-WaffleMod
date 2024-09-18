@@ -64,15 +64,12 @@ namespace WaffleMod
             waffleItem.pickupIconSprite = Addressables.LoadAssetAsync<Sprite>("RoR2/Base/Common/MiscIcons/texMysteryIcon.png").WaitForCompletion();
             waffleItem.pickupModelPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mystery/PickupMystery.prefab").WaitForCompletion();
 
-            // Can remove determines
-            // if a shrine of order,
-            // or a printer can take this item,
-            // generally true, except for NoTier items.
+            // Can remove determines if a shrine of order, or a printer can take this item, usually true, except for NoTier items.
             waffleItem.canRemove = true;
 
             // Hidden means that there will be no pickup notification,
             // and it won't appear in the inventory at the top of the screen.
-            // This is useful for certain noTier helper items, such as the DrizzlePlayerHelper.
+            // This is useful for certain noTier helper items!
             waffleItem.hidden = false;
 
             // You can add your own display rules here,
@@ -86,6 +83,7 @@ namespace WaffleMod
             ItemAPI.Add(new CustomItem(waffleItem, displayRules));
 
             // But now we have defined an item, but it doesn't do anything yet. So we'll need to define that ourselves.
+            // Doing += means OUR function is ADDED TO WHATS CALLED, so it does original stuff AND our function!
             GlobalEventManager.onCharacterDeathGlobal += GlobalEventManager_onCharacterDeathGlobal;
         }
 
