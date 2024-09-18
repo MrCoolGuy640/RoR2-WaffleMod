@@ -127,7 +127,7 @@ namespace WaffleMod
                 // And then drop our defined item in front of the player.
 
                 Log.Info($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(myItemDef.itemIndex), transform.position, transform.forward * 20f);
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(waffleItem.itemIndex), transform.position, transform.forward * 20f);
             }
         }
     }
