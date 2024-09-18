@@ -1,14 +1,14 @@
 {
   "strings": {
     "WAFFLE_ITEM_NAME": "FALLBACK DEFAULT LANGUAGE Stack of Waffles",
-    "WAFFLE_ITEM_DESCRIPTION": "FALLBACK DEFAULT LANGUAGE Whenever you <style=cIsDamage>kill an enemy</style>, you have a <style=cIsUtility>50%</style> chance to cloak for <style=cIsUtility>4s</style> <style=cStack>(+1s per stack)</style>."
+    "WAFFLE_ITEM_DESCRIPTION": "FALLBACK DEFAULT LANGUAGE Very Sweet! Whenever you <style=cIsDamage>kill an enemy</style>, you have a <style=cIsUtility>5%</style> chance to spawn some charmed enemies as your allies for <style=cIsUtility>30s</style> <style=cStack>(+10s per stack)</style>."
   },
   "FR": {
     "WAFFLE_ITEM_NAME": "FRENCH Stack of Waffles",
-    "WAFFLE_ITEM_DESCRIPTION": "FRENCH Whenever you <style=cIsDamage>kill an enemy</style>, you have a <style=cIsUtility>50%</style> chance to cloak for <style=cIsUtility>4s</style> <style=cStack>(+1s per stack)</style>."
+    "WAFFLE_ITEM_DESCRIPTION": "FRENCH Very Sweet! Whenever you <style=cIsDamage>kill an enemy</style>, you have a <style=cIsUtility>5%</style> chance to spawn some charmed enemies as your allies for <style=cIsUtility>30s</style> <style=cStack>(+10s per stack)</style>."
   },
   "en": {
     "WAFFLE_ITEM_NAME": "ENGLISH Stack of Waffles",
-    "WAFFLE_ITEM_DESCRIPTION": "ENGLISH Chance to cloak on kill"
+    "WAFFLE_ITEM_DESCRIPTION": "ENGLISH Very Sweet! Whenever you <style=cIsDamage>kill an enemy</style>, you have a <style=cIsUtility>5%</style> chance to spawn some charmed enemies as your allies for <style=cIsUtility>30s</style> <style=cStack>(+10s per stack)</style>"
   }
 }
