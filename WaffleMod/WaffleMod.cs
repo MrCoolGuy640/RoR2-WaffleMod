@@ -26,16 +26,14 @@ namespace WaffleMod
     {
         // The Plugin GUID should be a unique ID for this plugin,
         // which is human readable (as it is used in places like the config).
-        // If we see this PluginGUID as it is on thunderstore,
-        // we will deprecate this mod.
-        // Change the PluginAuthor and the PluginName !
+        // IF it already exists the mod will be deprecated.
         public const string PluginGUID = PluginAuthor + "." + PluginName;
-        public const string PluginAuthor = "AuthorName";
-        public const string PluginName = "ExamplePlugin";
+        public const string PluginAuthor = "MrCoolGuy640";
+        public const string PluginName = "WaffleMod";
         public const string PluginVersion = "1.0.0";
 
         // We need our item definition to persist through our functions, and therefore make it a class field.
-        private static ItemDef myItemDef;
+        private static ItemDef waffleItem;
 
         // The Awake() method is run at the very start when the game is initialized.
         public void Awake()
@@ -44,38 +42,38 @@ namespace WaffleMod
             Log.Init(Logger);
 
             // First let's define our item
-            myItemDef = ScriptableObject.CreateInstance<ItemDef>();
+            waffleItem = ScriptableObject.CreateInstance<ItemDef>();
 
             // Language Tokens, explained there https://risk-of-thunder.github.io/R2Wiki/Mod-Creation/Assets/Localization/
-            myItemDef.name = "EXAMPLE_CLOAKONKILL_NAME";
-            myItemDef.nameToken = "EXAMPLE_CLOAKONKILL_NAME";
-            myItemDef.pickupToken = "EXAMPLE_CLOAKONKILL_PICKUP";
-            myItemDef.descriptionToken = "EXAMPLE_CLOAKONKILL_DESC";
-            myItemDef.loreToken = "EXAMPLE_CLOAKONKILL_LORE";
+            waffleItem.name = "WAFFLE_ITEM_NAME";
+            waffleItem.nameToken = "WAFFLE_ITEM_NAME";
+            waffleItem.pickupToken = "WAFFLE_ITEM_DESCRIPTION";
+            waffleItem.descriptionToken = "WAFFLE_ITEM_DESCRIPTION";
+            waffleItem.loreToken = "WAFFLE_ITEM_DESCRIPTION";
 
             // The tier determines what rarity the item is:
             // Tier1=white, Tier2=green, Tier3=red, Lunar=Lunar, Boss=yellow,
             // and finally NoTier is generally used for helper items, like the tonic affliction
 #pragma warning disable Publicizer001 // Accessing a member that was not originally public. Here we ignore this warning because with how this example is setup we are forced to do this
-            myItemDef._itemTierDef = Addressables.LoadAssetAsync<ItemTierDef>("RoR2/Base/Common/Tier2Def.asset").WaitForCompletion();
+            waffleItem._itemTierDef = Addressables.LoadAssetAsync<ItemTierDef>("RoR2/Base/Common/Tier3Def.asset").WaitForCompletion();
 #pragma warning restore Publicizer001
             // Instead of loading the itemtierdef directly, you can also do this like below as a workaround
-            // myItemDef.deprecatedTier = ItemTier.Tier2;
+            // waffleItem.deprecatedTier = ItemTier.Tier3;
 
             // You can create your own icons and prefabs through assetbundles, but to keep this boilerplate brief, we'll be using question marks.
-            myItemDef.pickupIconSprite = Addressables.LoadAssetAsync<Sprite>("RoR2/Base/Common/MiscIcons/texMysteryIcon.png").WaitForCompletion();
-            myItemDef.pickupModelPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mystery/PickupMystery.prefab").WaitForCompletion();
+            waffleItem.pickupIconSprite = Addressables.LoadAssetAsync<Sprite>("RoR2/Base/Common/MiscIcons/texMysteryIcon.png").WaitForCompletion();
+            waffleItem.pickupModelPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mystery/PickupMystery.prefab").WaitForCompletion();
 
             // Can remove determines
             // if a shrine of order,
             // or a printer can take this item,
             // generally true, except for NoTier items.
-            myItemDef.canRemove = true;
+            waffleItem.canRemove = true;
 
             // Hidden means that there will be no pickup notification,
             // and it won't appear in the inventory at the top of the screen.
             // This is useful for certain noTier helper items, such as the DrizzlePlayerHelper.
-            myItemDef.hidden = false;
+            waffleItem.hidden = false;
 
             // You can add your own display rules here,
             // where the first argument passed are the default display rules:
@@ -85,7 +83,7 @@ namespace WaffleMod
             var displayRules = new ItemDisplayRuleDict(null);
 
             // Then finally add it to R2API
-            ItemAPI.Add(new CustomItem(myItemDef, displayRules));
+            ItemAPI.Add(new CustomItem(waffleItem, displayRules));
 
             // But now we have defined an item, but it doesn't do anything yet. So we'll need to define that ourselves.
             GlobalEventManager.onCharacterDeathGlobal += GlobalEventManager_onCharacterDeathGlobal;
@@ -105,7 +103,7 @@ namespace WaffleMod
             if (attackerCharacterBody.inventory)
             {
                 // Store the amount of our item we have
-                var garbCount = attackerCharacterBody.inventory.GetItemCount(myItemDef.itemIndex);
+                var garbCount = attackerCharacterBody.inventory.GetItemCount(waffleItem.itemIndex);
                 if (garbCount > 0 &&
                     // Roll for our 50% chance.
                     Util.CheckRoll(50, attackerCharacterBody.master))
